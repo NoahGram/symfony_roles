@@ -30,131 +30,61 @@
   </head>
 
   <body>
-
     <header>
-      {# <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 col-md-7 py-4">
-              <h4 class="text-black">About</h4>
-              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-            </div>
-            <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-black">Acces</h4>
-              <ul class="list-unstyled">
-                <li><a href="{{ path('default') }}" class="text-black">Home</a></li>
-                  
-                {% if app.user %}
-                    <li><a href="{{ path('app_logout') }}" class="text-black">Logout {{ app.user.username }}</a></li>
-                {% else %}
-                    <li><a href="{{ path('app_login') }}" class="text-black">Login</a></li>
-                    <li><a href="{{ path('app_register') }}" class="text-black">Register</a></li>
-                {% endif %}
-
-                {% if is_granted('ROLE_BALIE') %}
-                  <li><a href="{{ path('blog_index') }}" class="text-black">Products</a></li>
-                  <li><a href="{{ path('factuur_index') }}" class="text-black">Factuurs</a></li>
-                {% endif %}
-
-                {% if is_granted('ROLE_BOEKHOUDING') %}
-                  <li><a href="{{ path('factuur_index') }}" class="text-black">Factuurs</a></li>
-                  <li><a href="{{ path('rapporten_index') }}" class="text-black">Rapporten</a></li>
-                {% endif %}
-
-                {% if is_granted('ROLE_GUEST') %}
-                  <li><a href="{{ path('blog_index') }}" class="text-black">Products</a></li>
-                {% endif %}
-
-                {% if is_granted('ROLE_USERS') %}
-                  <li><a href="{{ path('blog_index') }}" class="text-black">Products</a></li>
-                {% endif %}
-
-                {% if is_granted('ROLE_ADMIN') %}
-                  <li><a href="{{ path('blog_index') }}" class="text-black">Products</a></li>
-                  <li><a href="{{ path('factuur_index') }}" class="text-black">Factuurs</a></li>
-                  <li><a href="{{ path('rapporten_index') }}" class="text-black">Rapporten</a></li>
-                {% endif %}
-                <li><a href="#" class="text-black">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="navbar navbar-dark bg-dark box-shadow">
-        <div class="container d-flex justify-content-between">
-           <a href="{{ path('default') }}" class="navbar-brand d-flex align-items-center"> 
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <strong>Album</strong>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </div>#}
-
-      <header>
-    <nav>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand px-1" href="{{ path('default') }}">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a href="{{ path('default') }}" class="text-black">Home</a>
-                        </li>
-                        <li class="nav-item">
-                          {% if app.user %}
-                            <a href="{{ path('app_logout') }}" class="text-black">Logout {{ app.user.username }}</a>
-                          {% else %}
-                            <a href="{{ path('app_login') }}" class="text-black">Login</a>
-                            <a href="{{ path('app_register') }}" class="text-black">Register</a>
-                          {% endif %}
-                        </li>
-                        <li class="nav-item">
+                        <li class="nav-item px-1">
                             {% if is_granted('ROLE_BALIE') %}
-                              <a href="{{ path('blog_index') }}" class="text-black">Products</a>
-                              <a href="{{ path('factuur_index') }}" class="text-black">Factuurs</a>
+                              <a href="{{ path('blog_index') }}" class="text-white">Products</a>
+                              <a href="{{ path('factuur_index') }}" class="text-white">Factuurs</a>
                           {% endif %}
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item px-1">
                             {% if is_granted('ROLE_BOEKHOUDING') %}
-                              <a href="{{ path('factuur_index') }}" class="text-black">Factuurs</a>
-                              <a href="{{ path('rapporten_index') }}" class="text-black">Rapporten</a>
+                              <a href="{{ path('factuur_index') }}" class="text-white">Factuurs</a>
+                              <a href="{{ path('rapporten_index') }}" class="text-white">Rapporten</a>
                           {% endif %}
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item px-1">
                             {% if is_granted('ROLE_GUEST') %}
-                              <a href="{{ path('blog_index') }}" class="text-black">Products</a>
+                              <a href="{{ path('blog_index') }}" class="text-white">Products</a>
                           {% endif %}
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item px-1">
                             {% if is_granted('ROLE_USERS') %}
-                              <a href="{{ path('blog_index') }}" class="text-black">Products</a>
+                              <a href="{{ path('blog_index') }}" class="text-white">Products</a>
                           {% endif %}
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item px-1">
                             {% if is_granted('ROLE_ADMIN') %}
-                              <a href="{{ path('blog_index') }}" class="text-black">Products</a>
-                              <a href="{{ path('factuur_index') }}" class="text-black">Factuurs</a>
-                              <a href="{{ path('rapporten_index') }}" class="text-black">Rapporten</a>
+                              <a href="{{ path('blog_index') }}" class="text-white">Products</a>
+                              <a href="{{ path('factuur_index') }}" class="text-white">Factuurs</a>
+                              <a href="{{ path('rapporten_index') }}" class="text-white">Rapporten</a>
                           {% endif %}
                         </li>
+                        
                         <li class="nav-item">
-                            <a href="#" class="text-black">Contact</a>
+                            <a href="#" class="text-white">Contact</a>
+                        </li>
+
+                        <li class="nav-item px-2">
+                          {% if app.user %}
+                            <a href="{{ path('app_logout') }}" class="text-white">Logout {{ app.user.username }}</a>
+                          {% else %}
+                            <a href="{{ path('app_login') }}" class="text-white">Login</a>
+                            <a href="{{ path('app_register') }}" class="text-white">Register</a>
+                          {% endif %}
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </nav>
-    </nav>
-</header>
     </header> 
 
     <main role="main">
