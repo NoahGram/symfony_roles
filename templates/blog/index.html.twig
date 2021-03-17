@@ -12,7 +12,10 @@
                 <th>Product</th>
                 <th>Description</th>
                 <th>Image</th>
-                <th>Price</th>
+                {% if is_granted('ROLE_GUEST') == true %}
+                {% else %}
+                    <th>Price</th>
+                {% endif %}
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,10 +26,15 @@
                 <td>{{ blog.product }}</td>
                 <td>{{ blog.description }}</td>
                 <td>{{ blog.image }}</td>
+                {% if is_granted('ROLE_GUEST') == true %}
+                {% else %}
                 <td>{{ blog.price }}</td>
+                {% endif %}
                 <td>
                     <a href="{{ path('blog_show', {'id': blog.id}) }}">show</a>
-                    <a href="{{ path('blog_edit', {'id': blog.id}) }}">edit</a>
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USERS') or is_granted('ROLE_BALIE') %}
+                        <a href="{{ path('blog_edit', {'id': blog.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -36,6 +44,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('blog_new') }}">Create new</a>
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USERS') or is_granted('ROLE_BALIE') %}
+        <a href="{{ path('blog_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}

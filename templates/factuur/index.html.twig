@@ -24,7 +24,9 @@
                 <td>{{ factuur.price }}</td>
                 <td>
                     <a href="{{ path('factuur_show', {'id': factuur.id}) }}">show</a>
-                    <a href="{{ path('factuur_edit', {'id': factuur.id}) }}">edit</a>
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_BOEKHOUDING') or is_granted('ROLE_BALIE') %}
+                        <a href="{{ path('factuur_edit', {'id': factuur.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -34,6 +36,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('factuur_new') }}">Create new</a>
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_BOEKHOUDING') or is_granted('ROLE_BALIE') %}
+        <a href="{{ path('factuur_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}

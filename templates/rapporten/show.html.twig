@@ -27,8 +27,8 @@
     </table>
 
     <a href="{{ path('rapporten_index') }}">back to list</a>
-
-    <a href="{{ path('rapporten_edit', {'id': rapporten.id}) }}">edit</a>
-
-    {{ include('rapporten/_delete_form.html.twig') }}
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_BOEKHOUDING') %}
+        <a href="{{ path('rapporten_edit', {'id': rapporten.id}) }}">edit</a>
+        {{ include('rapporten/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}

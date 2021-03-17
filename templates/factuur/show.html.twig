@@ -27,8 +27,8 @@
     </table>
 
     <a href="{{ path('factuur_index') }}">back to list</a>
-
-    <a href="{{ path('factuur_edit', {'id': factuur.id}) }}">edit</a>
-
-    {{ include('factuur/_delete_form.html.twig') }}
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_BOEKHOUDING') or is_granted('ROLE_BALIE') %}
+        <a href="{{ path('factuur_edit', {'id': factuur.id}) }}">edit</a>
+        {{ include('factuur/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}
